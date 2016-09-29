@@ -13,12 +13,12 @@
 FROM phusion/baseimage:0.9.18
 MAINTAINER Harold Ship <harold@il.ibm.com>
 
-VOLUME ["/var/lib/mod_tile"]
-
 # Set the locale. This affects the encoding of the Postgresql template
 # databases.
 ENV LANG C.UTF-8
 RUN update-locale LANG=C.UTF-8
+
+VOLUME ["/var/lib/mod_tile"]
 
 # Ensure `add-apt-repository` is present
 RUN apt-get update -y
@@ -125,7 +125,7 @@ RUN cd /usr/local/etc && sed --file /tmp/renderd.conf.sed --in-place renderd.con
 
 # Create the files required for the mod_tile system to run
 RUN mkdir /var/run/renderd && chown www-data: /var/run/renderd
-RUN mkdir /var/lib/mod_tile && chown www-data /var/lib/mod_tile
+RUN mkdir /var/lib/mod_tile && chown www-data: /var/lib/mod_tile
 
 # Configure mod_tile
 ADD mod_tile.load /etc/apache2/mods-available/
