@@ -13,6 +13,8 @@
 FROM phusion/baseimage:0.9.18
 MAINTAINER Harold Ship <harold@il.ibm.com>
 
+VOLUME ["/var/lib/mod_tile"]
+
 # Set the locale. This affects the encoding of the Postgresql template
 # databases.
 ENV LANG C.UTF-8
