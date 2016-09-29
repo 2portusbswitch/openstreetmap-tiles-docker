@@ -125,7 +125,7 @@ RUN cd /usr/local/etc && sed --file /tmp/renderd.conf.sed --in-place renderd.con
 
 # Create the files required for the mod_tile system to run
 RUN mkdir /var/run/renderd && chown www-data: /var/run/renderd
-RUN mkdir /var/lib/mod_tile
+#RUN mkdir /var/lib/mod_tile
 RUN chown www-data: /var/lib/mod_tile
 
 # Configure mod_tile
