@@ -18,7 +18,12 @@ MAINTAINER Harold Ship <harold@il.ibm.com>
 ENV LANG C.UTF-8
 RUN update-locale LANG=C.UTF-8
 
+RUN mkdir -p /usr/local/share/maps/style && \
+    mkdir -p /var/lib/mod_tile
+    
 VOLUME ["/var/lib/mod_tile"]
+VOLUME ["/usr/local/share/maps"]
+
 
 # Ensure `add-apt-repository` is present
 RUN apt-get update -y
@@ -179,7 +184,6 @@ ADD help.txt /usr/local/share/doc/run/help.txt
 ADD run.sh /usr/local/sbin/run
 ENTRYPOINT ["/sbin/my_init", "--", "/usr/local/sbin/run"]
 
-VOLUME ["/usr/local/share/maps"]
 
 # Default to showing the usage text
 CMD ["help"]
