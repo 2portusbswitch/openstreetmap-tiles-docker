@@ -19,6 +19,7 @@ ENV LANG C.UTF-8
 RUN update-locale LANG=C.UTF-8
 
 VOLUME ["/var/lib/mod_tile"]
+VOLUME ["/usr/local/share/maps"]
 
 # Ensure `add-apt-repository` is present
 RUN apt-get update -y
