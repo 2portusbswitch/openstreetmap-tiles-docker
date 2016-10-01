@@ -93,12 +93,7 @@ RUN apt-get install -y node-carto
 
 # Download OSM Bright sources and polygons
 RUN mkdir -p /usr/local/share/maps/style && \
-    chmod a+rx /usr/local/share/maps/style && \
-    cd /usr/local/share/maps/style && \
-    wget https://github.com/mapbox/osm-bright/archive/master.zip && \
-    wget http://data.openstreetmapdata.com/simplified-land-polygons-complete-3857.zip && \
-    wget http://data.openstreetmapdata.com/land-polygons-split-3857.zip && \
-    wget http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/cultural/ne_10m_populated_places_simple.zip
+    chmod a+rx /usr/local/share/maps/style
 
 # Unpack the OSM Bright sources and polygons
 #RUN cd /usr/local/share/maps/style && \
@@ -111,7 +106,14 @@ RUN mkdir -p /usr/local/share/maps/style && \
 #    mv ne_10m_populated_places_simple osm-bright-master/shp/
 
 WORKDIR /usr/local/share/maps/style
-RUN unzip '*.zip'
+RUN wget https://github.com/mapbox/osm-bright/archive/master.zip
+RUN wget http://data.openstreetmapdata.com/simplified-land-polygons-complete-3857.zip
+RUN wget http://data.openstreetmapdata.com/land-polygons-split-3857.zip
+RUN wget http://naciscdn.org/naturalearth/10m/cultural/ne_10m_populated_places_simple.zip
+RUN unzip master.zip
+RUN unzip simplified-land-polygons-complete-3857.zip
+RUN unzip land-polygons-split-3857.zip
+RUN unzip ne_10m_populated_places_simple.zip
 RUN mkdir osm-bright-master/shp
 RUN mv land-polygons-split-3857 osm-bright-master/shp
 RUN mv simplified-land-polygons-complete-3857 osm-bright-master/shp
