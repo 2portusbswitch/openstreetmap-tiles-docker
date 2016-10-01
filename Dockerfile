@@ -107,13 +107,14 @@ RUN mkdir -p /usr/local/share/maps/style && \
 
 WORKDIR /usr/local/share/maps/style
 RUN wget https://github.com/mapbox/osm-bright/archive/master.zip
+RUN unzip osm-bright-master.zip
 RUN wget http://data.openstreetmapdata.com/simplified-land-polygons-complete-3857.zip
-RUN wget http://data.openstreetmapdata.com/land-polygons-split-3857.zip
-RUN wget http://naciscdn.org/naturalearth/10m/cultural/ne_10m_populated_places_simple.zip
-RUN unzip master.zip
 RUN unzip simplified-land-polygons-complete-3857.zip
+RUN wget http://data.openstreetmapdata.com/land-polygons-split-3857.zip
 RUN unzip land-polygons-split-3857.zip
+RUN wget http://naciscdn.org/naturalearth/10m/cultural/ne_10m_populated_places_simple.zip
 RUN unzip ne_10m_populated_places_simple.zip
+
 RUN mkdir osm-bright-master/shp
 RUN mv land-polygons-split-3857 osm-bright-master/shp
 RUN mv simplified-land-polygons-complete-3857 osm-bright-master/shp
