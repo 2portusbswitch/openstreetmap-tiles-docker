@@ -101,14 +101,23 @@ RUN mkdir -p /usr/local/share/maps/style && \
     wget http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/cultural/ne_10m_populated_places_simple.zip
 
 # Unpack the OSM Bright sources and polygons
-RUN cd /usr/local/share/maps/style && \
-    unzip '*.zip' && \
-    mkdir osm-bright-master/shp && \
-    mv land-polygons-split-3857 osm-bright-master/shp && \
-    mv simplified-land-polygons-complete-3857 osm-bright-master/shp && \
-    mkdir ne_10m_populated_places_simple && \
-    mv ne_10m_populated_places_simple.* ne_10m_populated_places_simple && \
-    mv ne_10m_populated_places_simple osm-bright-master/shp/
+#RUN cd /usr/local/share/maps/style && \
+#    unzip '*.zip' && \
+#    mkdir osm-bright-master/shp && \
+#    mv land-polygons-split-3857 osm-bright-master/shp && \
+#    mv simplified-land-polygons-complete-3857 osm-bright-master/shp && \
+#    mkdir ne_10m_populated_places_simple && \
+#    mv ne_10m_populated_places_simple.* ne_10m_populated_places_simple && \
+#    mv ne_10m_populated_places_simple osm-bright-master/shp/
+
+WORKDIR /usr/local/share/maps/style
+RUN unzip '*.zip'
+RUN mkdir osm-bright-master/shp
+RUN mv land-polygons-split-3857 osm-bright-master/shp
+RUN mv simplified-land-polygons-complete-3857 osm-bright-master/shp
+RUN mkdir ne_10m_populated_places_simple
+RUN mv ne_10m_populated_places_simple.* ne_10m_populated_places_simple
+RUN mv ne_10m_populated_places_simple osm-bright-master/shp/
 
 # Create shapeindices for polygons
 RUN cd /usr/local/share/maps/style/osm-bright-master/shp/land-polygons-split-3857 && shapeindex land_polygons.shp
