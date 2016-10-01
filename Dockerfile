@@ -18,11 +18,17 @@ MAINTAINER Harold Ship <harold@il.ibm.com>
 ENV LANG C.UTF-8
 RUN update-locale LANG=C.UTF-8
 
-RUN mkdir -p /usr/local/share/maps/style && \
+RUN mkdir -p /usr/local/share/maps && \
     mkdir -p /var/lib/mod_tile
-    
+
+# Get ownership of the folders
+RUN chown -R root:root /usr/local/share/maps  && \
+    chown -R root:root /var/lib/mod_tile
+
+
 VOLUME ["/var/lib/mod_tile"]
 VOLUME ["/usr/local/share/maps"]
+
 
 
 # Ensure `add-apt-repository` is present
