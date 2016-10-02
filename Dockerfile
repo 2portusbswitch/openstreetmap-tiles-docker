@@ -105,7 +105,6 @@ RUN mkdir -p /usr/local/share/maps/style && \
 #    mv ne_10m_populated_places_simple.* ne_10m_populated_places_simple && \
 #    mv ne_10m_populated_places_simple osm-bright-master/shp/
 
-WORKDIR /usr/local/share/maps/style
 RUN cd /usr/local/share/maps/style && \
     wget http://data.openstreetmapdata.com/simplified-land-polygons-complete-3857.zip && \
     unzip simplified-land-polygons-complete-3857.zip
@@ -119,12 +118,18 @@ RUN cd /usr/local/share/maps/style && \
     wget http://naciscdn.org/naturalearth/10m/cultural/ne_10m_populated_places_simple.zip && \
     unzip ne_10m_populated_places_simple.zip
 
-RUN mkdir osm-bright-master/shp
-RUN mv land-polygons-split-3857 osm-bright-master/shp
-RUN mv simplified-land-polygons-complete-3857 osm-bright-master/shp
-RUN mkdir ne_10m_populated_places_simple
-RUN mv ne_10m_populated_places_simple.* ne_10m_populated_places_simple
-RUN mv ne_10m_populated_places_simple osm-bright-master/shp/
+RUN cd /usr/local/share/maps/style && \
+    mkdir osm-bright-master/shp
+RUN cd /usr/local/share/maps/style && \
+    mv land-polygons-split-3857 osm-bright-master/shp
+RUN cd /usr/local/share/maps/style && \
+    mv simplified-land-polygons-complete-3857 osm-bright-master/shp
+RUN cd /usr/local/share/maps/style && \
+    mkdir ne_10m_populated_places_simple
+RUN cd /usr/local/share/maps/style && \
+    mv ne_10m_populated_places_simple.* ne_10m_populated_places_simple
+RUN cd /usr/local/share/maps/style && \
+    mv ne_10m_populated_places_simple osm-bright-master/shp/
 
 # Create shapeindices for polygons
 RUN cd /usr/local/share/maps/style/osm-bright-master/shp/land-polygons-split-3857 && shapeindex land_polygons.shp
