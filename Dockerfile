@@ -120,13 +120,13 @@ RUN cd /usr/local/share/maps/style && \
     unzip ne_10m_populated_places_simple.zip
 
 RUN cd /usr/local/share/maps/style && \
-    mkdir osm-bright-master/shp
+    mkdir /usr/local/share/maps/style/osm-bright-master/shp
 RUN cd /usr/local/share/maps/style && \
     mv land-polygons-split-3857 osm-bright-master/shp
 RUN cd /usr/local/share/maps/style && \
     mv simplified-land-polygons-complete-3857 osm-bright-master/shp
 RUN cd /usr/local/share/maps/style && \
-    mkdir ne_10m_populated_places_simple
+    mkdir /usr/local/share/maps/style/ne_10m_populated_places_simple
 RUN cd /usr/local/share/maps/style && \
     mv ne_10m_populated_places_simple.* ne_10m_populated_places_simple
 RUN cd /usr/local/share/maps/style && \
