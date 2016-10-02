@@ -105,6 +105,7 @@ RUN mkdir -p /usr/local/share/maps/style && \
 #    mv ne_10m_populated_places_simple.* ne_10m_populated_places_simple && \
 #    mv ne_10m_populated_places_simple osm-bright-master/shp/
 
+WORKDIR /usr/local/share/maps/style
 RUN cd /usr/local/share/maps/style && \
     wget http://data.openstreetmapdata.com/simplified-land-polygons-complete-3857.zip && \
     unzip simplified-land-polygons-complete-3857.zip
