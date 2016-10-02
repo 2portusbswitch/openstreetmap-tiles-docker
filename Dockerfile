@@ -27,7 +27,7 @@ RUN chown -R root:root /usr/local/share/maps  && \
 
 
 VOLUME ["/var/lib/mod_tile"]
-VOLUME ["/usr/local/share/maps"]
+#VOLUME ["/usr/local/share/maps"]
 
 
 
@@ -141,6 +141,8 @@ RUN cd /usr/local/share/maps/style/osm-bright-master && \
 # Build the OSM Bright style sheet in mapnik format
 RUN cd /usr/local/share/maps/style/OSMBright && \
     carto project.mml > OSMBright.xml
+
+VOLUME ["/usr/local/share/maps"]
 
 # Configure renderd
 ADD renderd.conf.sed /tmp/
