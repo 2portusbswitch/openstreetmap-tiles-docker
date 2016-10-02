@@ -106,7 +106,8 @@ RUN mkdir -p /usr/local/share/maps/style && \
 #    mv ne_10m_populated_places_simple osm-bright-master/shp/
 
 WORKDIR /usr/local/share/maps/style
-RUN wget https://github.com/mapbox/osm-bright/archive/master.zip
+#RUN wget https://github.com/mapbox/osm-bright/archive/master.zip
+RUN wget https://dl.dropboxusercontent.com/u/8349300/OSMBOX/osm-bright-master.zip
 RUN unzip osm-bright-master.zip
 RUN wget http://data.openstreetmapdata.com/simplified-land-polygons-complete-3857.zip
 RUN unzip simplified-land-polygons-complete-3857.zip
