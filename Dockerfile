@@ -106,14 +106,18 @@ RUN mkdir -p /usr/local/share/maps/style && \
 #    mv ne_10m_populated_places_simple osm-bright-master/shp/
 
 WORKDIR /usr/local/share/maps/style
-RUN cd /usr/local/share/maps/style && wget http://data.openstreetmapdata.com/simplified-land-polygons-complete-3857.zip
-RUN cd /usr/local/share/maps/style && unzip simplified-land-polygons-complete-3857.zip
-RUN cd /usr/local/share/maps/style && wget https://github.com/mapbox/osm-bright/archive/master.zip
-RUN cd /usr/local/share/maps/style && unzip master.zip
-RUN cd /usr/local/share/maps/style && wget http://data.openstreetmapdata.com/land-polygons-split-3857.zip
-RUN cd /usr/local/share/maps/style && unzip land-polygons-split-3857.zip
-RUN cd /usr/local/share/maps/style && wget http://naciscdn.org/naturalearth/10m/cultural/ne_10m_populated_places_simple.zip
-RUN cd /usr/local/share/maps/style && unzip ne_10m_populated_places_simple.zip
+RUN cd /usr/local/share/maps/style && \
+    wget http://data.openstreetmapdata.com/simplified-land-polygons-complete-3857.zip && \
+    unzip simplified-land-polygons-complete-3857.zip
+RUN cd /usr/local/share/maps/style && \
+    wget https://github.com/mapbox/osm-bright/archive/master.zip && \
+    unzip master.zip
+RUN cd /usr/local/share/maps/style && \
+    wget http://data.openstreetmapdata.com/land-polygons-split-3857.zip  && \
+    unzip land-polygons-split-3857.zip
+RUN cd /usr/local/share/maps/style && \
+    wget http://naciscdn.org/naturalearth/10m/cultural/ne_10m_populated_places_simple.zip && \
+    unzip ne_10m_populated_places_simple.zip
 
 RUN mkdir osm-bright-master/shp
 RUN mv land-polygons-split-3857 osm-bright-master/shp
