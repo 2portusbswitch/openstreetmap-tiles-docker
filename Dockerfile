@@ -118,9 +118,17 @@ RUN cd /usr/local/share/maps/style && \
     mkdir /usr/local/share/maps/style/osm-bright-master/shp && \
     mv land-polygons-split-3857 osm-bright-master/shp && \
     mv simplified-land-polygons-complete-3857 osm-bright-master/shp && \
-    mkdir /usr/local/share/maps/style/ne_10m_populated_places_simple && \
-    mv ne_10m_populated_places_simple.* ne_10m_populated_places_simple  && \
-    mv ne_10m_populated_places_simple osm-bright-master/shp/
+    mkdir /usr/local/share/maps/style/ne_10m_populated_places && \
+    mv ne_10m_populated_places_simple ne_10m_populated_places && \    
+    mv ne_10m_populated_places_simple.README.html ne_10m_populated_places.README.html && \
+    mv ne_10m_populated_places_simple.shp ne_10m_populated_places.shp && \
+    mv ne_10m_populated_places_simple.VERSION.txt ne_10m_populated_places.VERSION.txt && \
+    mv ne_10m_populated_places_simple.shx ne_10m_populated_places.shx && \
+    mv ne_10m_populated_places_simple.dbf ne_10m_populated_places.dbf && \
+    mv ne_10m_populated_places_simple.zip ne_10m_populated_places.zip && \
+    mv ne_10m_populated_places_simple.prj ne_10m_populated_places.prj && \
+    mv ne_10m_populated_places.* ne_10m_populated_places && \
+    mv ne_10m_populated_places osm-bright-master/shp/ne_10m_populated_places  
 
 # Create shapeindices for polygons
 RUN cd /usr/local/share/maps/style/osm-bright-master/shp/land-polygons-split-3857 && shapeindex land_polygons.shp
