@@ -119,7 +119,6 @@ RUN cd /usr/local/share/maps/style && \
     mv land-polygons-split-3857 osm-bright-master/shp && \
     mv simplified-land-polygons-complete-3857 osm-bright-master/shp && \
     mkdir /usr/local/share/maps/style/ne_10m_populated_places && \
-    mv ne_10m_populated_places_simple ne_10m_populated_places && \    
     mv ne_10m_populated_places_simple.README.html ne_10m_populated_places.README.html && \
     mv ne_10m_populated_places_simple.shp ne_10m_populated_places.shp && \
     mv ne_10m_populated_places_simple.VERSION.txt ne_10m_populated_places.VERSION.txt && \
