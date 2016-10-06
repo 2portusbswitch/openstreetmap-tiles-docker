@@ -211,6 +211,7 @@ ADD help.txt /usr/local/share/doc/run/help.txt
 ADD run.sh /usr/local/sbin/run
 ENTRYPOINT ["/sbin/my_init", "--", "/usr/local/sbin/run"]
 
+RUN sed -i -- 's/<\/IfModule>/Redirect "\/osm" "\/osm_tiles"\n<\/IfModule>/g' /etc/apache2/mods-enabled/alias.conf
 
 # Default to showing the usage text
 CMD ["help"]
