@@ -198,6 +198,7 @@ EXPOSE 80 5432
 VOLUME ["/data"]
 
 # External volume for www
+RUN mkdir -p /var/www/html
 VOLUME ["/var/www/html"]
 
 # Set the osm2pgsql import cache size in MB. Used in `run import`.
@@ -216,8 +217,6 @@ RUN sed -i -- 's/<\/IfModule>/Redirect "\/osm" "\/osm_tiles"\n<\/IfModule>/g' /e
 # Add the entrypoint
 ADD run.sh /usr/local/sbin/run
 ENTRYPOINT ["/sbin/my_init", "--", "/usr/local/sbin/run"]
-
-
 
 # Default to showing the usage text
 CMD ["help"]
