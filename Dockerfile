@@ -198,8 +198,8 @@ EXPOSE 80 5432
 VOLUME ["/data"]
 
 # External volume for www
-RUN mkdir -p /var/www/html
-VOLUME ["/var/www/html"]
+#RUN mkdir -p /var/www/html
+#VOLUME ["/var/www/html"]
 
 # Set the osm2pgsql import cache size in MB. Used in `run import`.
 ENV OSM_IMPORT_CACHE 800
