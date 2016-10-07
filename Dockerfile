@@ -197,6 +197,9 @@ EXPOSE 80 5432
 # We need the volume for importing data from
 VOLUME ["/data"]
 
+# External volume for www
+VOLUME ["/var/www/html"]
+
 # Set the osm2pgsql import cache size in MB. Used in `run import`.
 ENV OSM_IMPORT_CACHE 800
 
