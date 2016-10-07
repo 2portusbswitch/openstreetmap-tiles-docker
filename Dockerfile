@@ -149,6 +149,7 @@ RUN cd /usr/local/share/maps/style/osm-bright-master && \
 RUN cd /usr/local/share/maps/style/OSMBright && \
     carto project.mml > OSMBright.xml
 
+RUN mkdir -p /usr/local/share/maps
 VOLUME ["/usr/local/share/maps"]
 
 # Configure renderd
@@ -198,8 +199,8 @@ EXPOSE 80 5432
 VOLUME ["/data"]
 
 # External volume for www
-#RUN mkdir -p /var/www/html
-#VOLUME ["/var/www/html"]
+RUN mkdir -p /var/www/html
+VOLUME ["/var/www/html"]
 
 # Set the osm2pgsql import cache size in MB. Used in `run import`.
 ENV OSM_IMPORT_CACHE 800
