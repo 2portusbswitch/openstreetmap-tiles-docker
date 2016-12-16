@@ -214,6 +214,8 @@ ADD help.txt /usr/local/share/doc/run/help.txt
 
 # Update apache to have a redirect between osm_tiles and osm
 RUN sed -i -- 's/<\/IfModule>/Redirect "\/osm" "\/osm_tiles"\n<\/IfModule>/g' /etc/apache2/mods-enabled/alias.conf
+RUN sed -i -- 's/<\/IfModule>/Redirect "\/index.(.*)" "\/var\/www\/html\/index.(.*)"\n<\/IfModule>/g' /etc/apache2/mods-enabled/alias.conf
+RUN sed -i -- 's/<\/IfModule>/Redirect "\/www\/(.*)" "\/var\/www\/html\/$1"\n<\/IfModule>/g' /etc/apache2/mods-enabled/alias.conf
 
 # Add the entrypoint
 ADD run.sh /usr/local/sbin/run
